@@ -1,0 +1,83 @@
+PASOS A SEGUIR PARA PROBAR LA API EN POSTMAN
+
+Asegúrate de que tu servidor de Laravel esté corriendo (generalmente en http://127.0.0.1:8000).
+
+============================================================
+GESTIÓN DE DUEÑOS (OWNERS)
+============================================================
+
+1. CREAR UN DUEÑO (POST)
+   - URL: http://127.0.0.1:8000/api/duenos
+   - Método: POST
+   - Body (seleccionando "raw" y "JSON"):
+     {
+       "nombre": "Juan",
+       "apellido": "Perez"
+     }
+   - Resultado esperado: Recibirás los datos del dueño creado con su ID.
+
+2. LEER/CONSULTAR TODOS LOS DUEÑOS (GET)
+   - URL: http://127.0.0.1:8000/api/duenos
+   - Método: GET
+   - Resultado esperado: Una lista de todos los dueños registrados.
+
+3. LEER UN DUEÑO ESPECÍFICO (GET)
+   - URL: http://127.0.0.1:8000/api/duenos/{ID}  (Reemplaza {ID} por el número, ej: 1)
+   - Método: GET
+
+4. ACTUALIZAR UN DUEÑO (PUT)
+   - URL: http://127.0.0.1:8000/api/duenos/{ID}
+   - Método: PUT
+   - Body (JSON):
+     {
+       "nombre": "Juan Carlos",
+       "apellido": "Perez Gomez"
+     }
+   - Resultado esperado: Los datos del dueño se actualizan.
+
+5. ELIMINAR UN DUEÑO (DELETE)
+   - URL: http://127.0.0.1:8000/api/duenos/{ID}
+   - Método: DELETE
+   - Resultado esperado: El dueño se elimina. (NOTA: Esto también borrará todos sus animales).
+
+============================================================
+GESTIÓN DE ANIMALES
+============================================================
+
+1. CREAR UN ANIMAL (POST)
+   *Necesitas el ID de un dueño existente (ej: 1)*
+   - URL: http://127.0.0.1:8000/api/animales
+   - Método: POST
+   - Body (JSON):
+     {
+       "nombre": "Firulais",
+       "tipo": "perro",
+       "peso": 12.5,
+       "enfermedad": "Ninguna",
+       "comentarios": "Muy juguetón",
+       "dueno_id": 1
+     }
+   - Nota: El campo "tipo" solo acepta: "perro", "gato", "hámster", "conejo".
+
+2. LEER/CONSULTAR TODOS LOS ANIMALES (GET)
+   - URL: http://127.0.0.1:8000/api/animales
+   - Método: GET
+
+3. LEER UN ANIMAL ESPECÍFICO (GET)
+   - URL: http://127.0.0.1:8000/api/animales/{ID}
+   - Método: GET
+
+4. ACTUALIZAR UN ANIMAL (PUT)
+   - URL: http://127.0.0.1:8000/api/animales/{ID}
+   - Método: PUT
+   - Body (JSON):
+     {
+       "nombre": "Firulais II",
+       "tipo": "perro",
+       "peso": 14.0,
+       "dueno_id": 1
+     }
+
+5. ELIMINAR UN ANIMAL (DELETE)
+   - URL: http://127.0.0.1:8000/api/animales/{ID}
+   - Método: DELETE
